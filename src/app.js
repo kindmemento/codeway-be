@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const parameterRoutes = require('./route/parameterRoutes')
+const panelRoutes = require('./routes/panelRoutes')
 
 app.use(express.json())
-app.use('/parameters', parameterRoutes)
+app.use('/api', panelRoutes)
 
 module.exports = app
