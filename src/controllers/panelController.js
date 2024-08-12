@@ -8,3 +8,12 @@ const createParameter = async (req, rest) => {
 		rest.status(500).json({ error: 'Failed to create parameter' })
 	}
 }
+
+const getAllParameters = async (req, res) => {
+	try {
+		const parameters = await PanelService.getAllParameters()
+		res.status(200).json(parameters)
+	} catch (error) {
+		res.status(500).json({ error: 'Failed to retrieve parameters' })
+	}
+}
