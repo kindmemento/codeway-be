@@ -10,11 +10,11 @@ const getAllParameters = async () => {
 }
 
 // @TODO: Test this out
-const updateParameters = async (id, data) => {
+const updateParameter = async (id, data) => {
 	await db.collection('parameters').doc(id).set(data, { merge: true })
 }
 
 module.exports = {
 	getAllParameters,
-	updateParameters
+	updateParameter
 }
