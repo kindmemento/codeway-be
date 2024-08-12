@@ -1,12 +1,8 @@
-const { db }= require('../config/firebase')
+const { db } = require('../config/firebase')
 
 const getAllParameters = async () => {
-	const parameters = []
 	const snapshot = await db.collection('parameters').get()
-	snapshot.forEach(doc => {
-		parameters.push({ id: doc.id, ...doc.data() })
-	})
-	return parameters
+	return snapshot.docs.map(doc => doc.data())
 }
 
 // @TODO: Test this out
@@ -16,5 +12,5 @@ const updateParameter = async (id, data) => {
 
 module.exports = {
 	getAllParameters,
-	updateParameter
+	updateParameter,
 }
