@@ -5,3 +5,10 @@ const createParameter = async (data) => {
 	const newParam = await ParameterModel.add(data)
 	return { id: newParam.id, ...data }
 }
+
+const getAllParameters = async () => {
+	const snapshot = await ParameterModel.get()
+	const params = []
+	snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
+	return params
+}
