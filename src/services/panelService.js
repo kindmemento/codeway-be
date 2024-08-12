@@ -12,3 +12,22 @@ const getAllParameters = async () => {
 	snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
 	return params
 }
+
+const updateParameter = async (id, data) => {
+	// @TODO: Validate incoming data before sending a request
+	// @TODO: In case of simultaneous requests, process the first one, reject the rest
+	await ParameterModel.doc(id).update(data)
+	return { id, ...data }
+}
+
+const deleteParameter = async (id) => {
+	await ParameterModel.doc(id).delete()
+	return { id }
+}
+
+module.exports = {
+	createParameter,
+	getAllParameters,
+	updateParameter,
+	deleteParameter
+}
