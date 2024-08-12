@@ -27,3 +27,20 @@ const updateParameter = async (req, res) => {
 		res.status(500).json({ error: 'Failed to update parameter' })
 	}
 }
+
+const deleteParameter = async (req, res) => {
+	const { id } = req.params
+	try {
+		const deletedParam = await PanelService.deleteParameter(id)
+		res.status(200).json(deletedParam)
+	} catch (error) {
+		res.status(500).json({ error: 'Failed to delete parameter' })
+	}
+}
+
+module.exports = {
+	createParameter,
+	getAllParameters,
+	updateParameter,
+	deleteParameter
+}
