@@ -17,3 +17,13 @@ const getAllParameters = async (req, res) => {
 		res.status(500).json({ error: 'Failed to retrieve parameters' })
 	}
 }
+
+const updateParameter = async (req, res) => {
+	const { id } = req.params
+	try {
+		const updatedParam = await PanelService.updateParameter(id, req.body)
+		res.status(200).json(updatedParam)
+	} catch (error) {
+		res.status(500).json({ error: 'Failed to update parameter' })
+	}
+}
