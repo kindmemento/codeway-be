@@ -5,12 +5,14 @@ const {
 	updateParameter,
 	deleteParameter
 } = require('../controllers/panelController')
+const apiTokenAuth = require('../middleware/apiTokenAuth')
+const firebaseAuth = require('../middleware/firebaseAuth')
 
 const router = express.Router()
 
-router.post('/panel/parameters', createParameter)
-router.get('/panel/parameters', getAllParameters)
-router.put('/panel/parameters/:id', updateParameter)
-router.delete('/panel/parameters/:id', deleteParameter)
+router.post('/panel/parameters', apiTokenAuth, createParameter)
+router.get('/panel/parameters', apiTokenAuth, getAllParameters)
+router.put('/panel/parameters/:id', firebaseAuth, updateParameter)
+router.delete('/panel/parameters/:id', apiTokenAuth, deleteParameter)
 
 module.exports = router
