@@ -1,41 +1,29 @@
 const { admin, firestore } = require('../config/firebase')
 
-// @TODO: Remove service layer try-catch blocks for simplicity before deployment
+const createParameter = async data => {
+	const now = admin.firestore.Timestamp.now()
 
-const createParameter = async (data) => {
-	try {
-		const now = admin.firestore.Timestamp.now()
+	const dataWithTimestamp = {
+		...data,
+		created: now,
+	}
 
-		const dataWithTimestamp = {
-			...data,
-			created: now
-		}
+	const newParamRef = await firestore.collection('parameters').add(dataWithTimestamp)
 
-		const newParamRef = await firestore.collection('parameters').add(dataWithTimestamp)
+	const newParamDoc = await newParamRef.get()
+	const newParamData = newParamDoc.data()
 
-		const newParamDoc = await newParamRef.get()
-		const newParamData = newParamDoc.data()
-
-		return {
-			id: newParamRef.id,
-			...newParamData
-		}
-	} catch (error) {
-		console.error('Error creating parameter:', error)
-		throw error
+	return {
+		id: newParamRef.id,
+		...newParamData,
 	}
 }
 
 const getAllParameters = async () => {
-	try {
-		const snapshot = await firestore.collection('parameters').get()
-		const params = []
-		snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
-		return params
-	} catch (error) {
-		console.error('Error fetching parameters:', error)
-		throw error
-	}
+	const snapshot = await firestore.collection('parameters').get()
+	const params = []
+	snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
+	return params
 }
 
 // const updateParameter = async (id, data) => {
@@ -45,14 +33,14 @@ const getAllParameters = async () => {
 // 	return { id, ...data }
 // }
 
-// const deleteParameter = async (id) => {
-// 	await ParameterModel.doc(id).delete()
-// 	return { id }
-// }
+const deleteParameter = async id => {
+	await firestore.collection('parameters').doc(id).delete()
+	return { success: true }
+}
 
 module.exports = {
 	createParameter,
 	getAllParameters,
+	deleteParameter,
 	// updateParameter,
-	// deleteParameter
 }
