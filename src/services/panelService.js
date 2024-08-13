@@ -26,12 +26,23 @@ const getAllParameters = async () => {
 	return params
 }
 
-// const updateParameter = async (id, data) => {
-// 	// @TODO: Validate incoming data before sending a request
-// 	// @TODO: In case of simultaneous requests, process the first one, reject the rest
-// 	await ParameterModel.doc(id).update(data)
-// 	return { id, ...data }
-// }
+const updateParameter = async (id, data) => {
+	const now = admin.firestore.Timestamp.now()
+	const paramRef = firestore.collection('parameters').doc(id)
+
+	// Check for conflicts, prevent if any
+	const doc = await paramRef.get()
+	if (!doc.exists) {
+		throw new Error('Parameter not found')
+	}
+
+	data.last_updated = now
+
+	await paramRef.update(data)
+
+	const updatedParam = await paramRef.get()
+	return { id: updatedParam.id, ...updatedParam.data() }
+}
 
 const deleteParameter = async id => {
 	await firestore.collection('parameters').doc(id).delete()
@@ -42,5 +53,5 @@ module.exports = {
 	createParameter,
 	getAllParameters,
 	deleteParameter,
-	// updateParameter,
+	updateParameter,
 }
