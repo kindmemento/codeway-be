@@ -1,5 +1,4 @@
-const admin = require('../config/firebase')
-const firestore = admin.firestore()
+const { admin, firestore } = require('../config/firebase')
 
 // @TODO: Remove service layer try-catch blocks for simplicity before deployment
 
