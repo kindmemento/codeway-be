@@ -5,6 +5,7 @@ const createParameter = async (req, rest) => {
 		const newParam = await PanelService.createParameter(req.body)
 		rest.status(201).json(newParam)
 	} catch (error) {
+		console.error(`Error creating parameter`, error)
 		rest.status(500).json({ error: 'Failed to create parameter' })
 	}
 }
@@ -14,6 +15,7 @@ const getAllParameters = async (req, res) => {
 		const parameters = await PanelService.getAllParameters()
 		res.status(200).json(parameters)
 	} catch (error) {
+		console.error(`Error fetching parameters`, error)
 		res.status(500).json({ error: 'Failed to retrieve parameters' })
 	}
 }
@@ -34,6 +36,7 @@ const deleteParameter = async (req, res) => {
 		const deletedParam = await PanelService.deleteParameter(id)
 		res.status(200).json(deletedParam)
 	} catch (error) {
+		console.error(`Error deleting parameter with id ${id}:`, error)
 		res.status(500).json({ error: 'Failed to delete parameter' })
 	}
 }
