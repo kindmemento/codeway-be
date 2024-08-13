@@ -1,6 +1,8 @@
 const admin = require('../config/firebase')
 const firestore = admin.firestore()
 
+// @TODO: Remove service layer try-catch blocks for simplicity before deployment
+
 const createParameter = async (data) => {
 	try {
 		const now = admin.firestore.Timestamp.now()
@@ -26,10 +28,15 @@ const createParameter = async (data) => {
 }
 
 const getAllParameters = async () => {
-	const snapshot = await firestore.collection('parameters').get()
-	const params = []
-	snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
-	return params
+	try {
+		const snapshot = await firestore.collection('parameters').get()
+		const params = []
+		snapshot.forEach(doc => params.push({ id: doc.id, ...doc.data() }))
+		return params
+	} catch (error) {
+		console.error('Error fetching parameters:', error)
+		throw error
+	}
 }
 
 // const updateParameter = async (id, data) => {
@@ -47,6 +54,6 @@ const getAllParameters = async () => {
 module.exports = {
 	createParameter,
 	getAllParameters,
-	updateParameter,
-	deleteParameter
+	// updateParameter,
+	// deleteParameter
 }
