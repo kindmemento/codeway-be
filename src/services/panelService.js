@@ -27,21 +27,43 @@ const getAllParameters = async () => {
 }
 
 const updateParameter = async (id, data) => {
-	const now = admin.firestore.Timestamp.now()
-	const paramRef = firestore.collection('parameters').doc(id)
+	try {
+		const updatedData = await firestore.runTransaction(async transaction => {
+			const docRef = firestore.collection('parameters').doc(id)
+			const doc = await transaction.get(docRef)
 
-	// Check for conflicts, prevent if any
-	const doc = await paramRef.get()
-	if (!doc.exists) {
-		throw new Error('Parameter not found')
+			if (!doc.exists) {
+				throw new Error('Parameter not found')
+			}
+
+			const existingData = doc.data()
+			const currentTimestamp = admin.firestore.Timestamp.now()
+
+			// Transaction will fail if a concurrent one is updating the doc
+			transaction.update(docRef, {
+				...data,
+				last_updated: currentTimestamp,
+			})
+
+			return {
+				id: docRef.id,
+				...existingData,
+				...data,
+				last_updated: currentTimestamp,
+			}
+		})
+		return updatedData
+	} catch (error) {
+		if (error.code === 'aborted') {
+			// 'aborted' error code means transaction failed due to concurrency
+			const conflictError = new Error('Conflict detected: This parameter was modified by another user.')
+			conflictError.status = 409
+			throw conflictError
+		} else {
+			console.error(`Error updating parameter with id ${id}:`, error)
+			throw error // Rethrow original error if it's not a concurrency issue
+		}
 	}
-
-	data.last_updated = now
-
-	await paramRef.update(data)
-
-	const updatedParam = await paramRef.get()
-	return { id: updatedParam.id, ...updatedParam.data() }
 }
 
 const deleteParameter = async id => {
