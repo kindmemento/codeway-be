@@ -18,6 +18,4 @@ admin.initializeApp({
 // 	databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
 // })
 
-const db = admin.firestore()
-
-module.exports = { db, admin }
+module.exports = { admin }
