@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "80bf8d1b-f8db-4170-b5a4-a5e28dab5175",
+		"name": "NeuralBase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18547593"
+	},
+	"item": [
+		{
+			"name": "Get Parameters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "IikZW3r6JKUYuCz4Q0dnokLlzBjYzo9lK_QsHr33FYI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/panel/parameters",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"panel",
+						"parameters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Parameters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/panel/parameters",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"panel",
+						"parameters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Parameter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "IikZW3r6JKUYuCz4Q0dnokLlzBjYzo9lK_QsHr33FYI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/panel/parameters/?paramId=4Re4lUqOEP0wV2k2OiF1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"panel",
+						"parameters",
+						""
+					],
+					"query": [
+						{
+							"key": "paramId",
+							"value": "4Re4lUqOEP0wV2k2OiF1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Parameter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ0MjY5YTE3MzBlNTA3MTllNmIxNjA2ZTQyYzNhYjMyYjEyODA0NDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY29ydGV4LWNvbmZpZyIsImF1ZCI6ImNvcnRleC1jb25maWciLCJhdXRoX3RpbWUiOjE3MjM1Nzk1OTksInVzZXJfaWQiOiJMbER2UjVRQUZ0V3pQcVZzeHNDdHBzb3NYWGcxIiwic3ViIjoiTGxEdlI1UUFGdFd6UHFWc3hzQ3Rwc29zWFhnMSIsImlhdCI6MTcyMzU4NjI5NSwiZXhwIjoxNzIzNTg5ODk1LCJlbWFpbCI6Im1ldGluZG9rbWVuLmRldkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtZXRpbmRva21lbi5kZXZAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.px5P00-OnkyY3c_I6ExDAJuQz0nDCItB92UskwtlAREM6ANunzrqYvpC_TBUNYe0mDFmQKWGLmsUpqubUpNEYE5THQSDsMJrmkXtEV9qQmb4M1-1xW-H9BizerFt9zAETkuGaG3iWAMR3d_wXGFEwMLyy1o1PB8OKO2SQiafsrCBNsy8dFtgn2gs03BoYHWYysl4mSyoyfoi-g7rxAtfNVQx4JvrveKUw9WxUdHOugagKO5Zmw0wkrA0jTJ2HowX7UpCqhT6_U07jvLpAoNPLCQOdtz9HTcOlGsrvnhHdn2WeShnOXPMxE5Wr4mZBo9yEondU8ZKNd2fVZyt7i5BDw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"id\":\"SdLgr0C3x8GZcyQXYZtQ\",\n   \"key\":\"Test_param132\",\n   \"value\":\"Test_value1\",\n   \"description\":\"Test_desc1\",\n   \"created\":{\n      \"_nanoseconds\":447000000,\n      \"_seconds\":1723579641\n   },\n   \"last_updated\":{\n      \"_seconds\":1723588264,\n      \"_nanoseconds\":679000000\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/panel/parameters/?paramId=4Re4lUqOEP0wV2k2OiF1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"panel",
+						"parameters",
+						""
+					],
+					"query": [
+						{
+							"key": "paramId",
+							"value": "4Re4lUqOEP0wV2k2OiF1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mobile Configurations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "IikZW3r6JKUYuCz4Q0dnokLlzBjYzo9lK_QsHr33FYI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/mobile/config",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"mobile",
+						"config"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
