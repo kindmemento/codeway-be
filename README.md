@@ -33,17 +33,17 @@ The API serves the frontend panel and handles all parameter management operation
 - Use `http://localhost:5173` for `FRONTEND_PANEL_URL` for local server, since frontend project runs on port `5173` by default.
 
 ### Installation
-1. Clone the repository
-git clone
+1. Clone the repository:\
+`git clone https://gitlab.com/cortexconfig/NeuralBase.git`
 
-2. Install dependencies
-npm install
+2. Install dependencies:\
+`npm install`
 
-3. Run the development server
-npm run start
+3. Run the development server:\
+`npm run start`
 
-4. Build for production
-npm run build
+4. Build for production:\
+`npm run build`
 
 
 ### API Endpoints
