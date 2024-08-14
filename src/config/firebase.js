@@ -8,7 +8,10 @@ admin.initializeApp({
 	databaseUrl: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
 })
 
-// @TODO: Fix the issue with env variables
+// IMPORTANT
+// Best practice for production is to use environment variables to initialize Firebase app for security purposes.
+// Service Account Key JSON file is used to workaround initialization issues on local environment.
+
 // admin.initializeApp({
 // 	credential: admin.credential.cert({
 // 		projectId: process.env.FIREBASE_PROJECT_ID,
