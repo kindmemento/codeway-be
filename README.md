@@ -15,12 +15,15 @@ The API serves the frontend panel and handles all parameter management operation
 	- Firebase Project: Set up a Firebase project with Firestore and Firebase Authentication, or use an existing one.
 
 ### Environment Variables
+	PORT=3000
 	FIREBASE_PROJECT_ID=your_project_id
-	FIREBASE_PRIVATE_KEY_ID=your_private_key_id
 	FIREBASE_PRIVATE_KEY=your_private_key
 	FIREBASE_CLIENT_EMAIL=your_client_email
-	FIREBASE_CLIENT_ID=your_client_id
-	API_TOKEN=your_predefined_api_token
+	API_TOKEN=
+	FRONTEND_PANEL_URL=
+
+- Use `IikZW3r6JKUYuCz4Q0dnokLlzBjYzo9lK_QsHr33FYI` for API token
+- Use `http://localhost:5173` for `FRONTEND_PANEL_URL` for local server, since frontend project runs on port `5173` by default.
 
 ### Installation
 1. Clone the repository
@@ -48,5 +51,5 @@ npm run build
 2. Deploy to a server: You can deploy the backend to a cloud server like Heroku, AWS, or Google Cloud
 
 ### Usage
-	- Run `npm run start` to start the server
-	- Use the API endpoints to manage parameters, either from the frontend or through API clients like Postman.
+- Run `npm run start` to start the server
+- Use the API endpoints to manage parameters, either from the frontend or through API clients like Postman.
