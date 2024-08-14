@@ -26,7 +26,6 @@ const getAllParameters = async () => {
 	return params
 }
 
-// @TODO: Test this with Newman
 const updateParameter = async (id, data) => {
 	try {
 		const updatedData = await firestore.runTransaction(async transaction => {
