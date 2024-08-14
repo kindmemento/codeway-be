@@ -1,7 +1,7 @@
-const ParameterModel = require('../models/parameterModel')
+const { firestore } = require('../config/firebase')
 
 const getMobileConfiguration = async () => {
-	const snapshot = await ParameterModel.get()
+	const snapshot = await firestore.collection('parameters').get()
 	const config = {}
 	snapshot.forEach(doc => config[doc.data().key] = doc.data().value)
 	return config
