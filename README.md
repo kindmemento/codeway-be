@@ -52,4 +52,5 @@ npm run build
 
 ### Usage
 - Run `npm run start` to start the server
-- Use the API endpoints to manage parameters, either from the frontend or through API clients like Postman.
+- Use the API endpoints to manage parameters, either from the frontend or through an API client such as Postman.
+- A ready-to-use Postman collection is provided inside project root in `JSON` format.
