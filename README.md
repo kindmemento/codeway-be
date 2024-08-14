@@ -22,6 +22,13 @@ The API serves the frontend panel and handles all parameter management operation
 	API_TOKEN=
 	FRONTEND_PANEL_URL=
 
+### IMPORTANT
+- You need to setup your own Firebase Project and enter your credentials for `Project ID`, `Private Key`, and `Client Email`
+- Since the project uses a `ServiceAccountKey.json` file to initialize Firebase, you can include your own, and omit `FIREBASE_PRIVATE_KEY` entirely.
+- **FOR EASE OF USE ONLY**, I've included my own `serviceAccountKey.json` file to speed up setup time.
+
+---
+
 - Use `IikZW3r6JKUYuCz4Q0dnokLlzBjYzo9lK_QsHr33FYI` for API token
 - Use `http://localhost:5173` for `FRONTEND_PANEL_URL` for local server, since frontend project runs on port `5173` by default.
 
