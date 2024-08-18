@@ -26,7 +26,10 @@ const updateParameter = async (req, res) => {
 		const updatedParam = await PanelService.updateParameter(id, req.body)
 		res.status(200).json(updatedParam)
 	} catch (error) {
-		res.status(500).json({ error: 'Failed to update parameter' })
+		const errStatus = error.status || 500
+		const errMsg = error.errMsg !== null && error.errMsg !== undefined ? error.errMsg : 'Failed to update parameter'
+
+		res.status(errStatus).json({ error: errMsg  })
 	}
 }
 
