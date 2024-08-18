@@ -51,7 +51,7 @@ The API serves the frontend panel and handles all parameter management operation
 - Get All Parameters: GET `/api/panel/parameters` (Requires API token)
 - Add Parameters: POST `/api/panel/parameters` (Requires API token)
 - Update Parameter: PUT `/api/panel/parameters/:id` (Requires Firebase ID token)
-- Delete Parameter: DELETE `/api/panel/parameters` (Requires API token)
+- Delete Parameter: DELETE `/api/panel/parameters/:id` (Requires API token)
 
 ### Deployment
 1. Set up environment variables: Ensure your .env file is correctly set up with your Firebase credentials and API token.
