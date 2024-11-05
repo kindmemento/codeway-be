@@ -1,12 +1,12 @@
 const admin = require('firebase-admin')
 const dotenv = require('dotenv')
 dotenv.config()
-const serviceAccount = require('../../firebaseServiceAccountKey.json')
+// const serviceAccount = require('../../firebaseServiceAccountKey.json')
 
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseUrl: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
-})
+// admin.initializeApp({
+// 	credential: admin.credential.cert(serviceAccount),
+// 	databaseUrl: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
+// })
 
 // IMPORTANT
 // Best practice for production is to use environment variables to initialize Firebase app for security purposes.
