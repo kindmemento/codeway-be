@@ -1,6 +1,7 @@
 .env
 node_modules
 .vscode
+.DS_Store
 # Service Account Key MUST NOT be included in a production environment.
 # Left here on purpose for ease of use.
-# firebaseServiceAccountKey.json
+firebaseServiceAccountKey.json
